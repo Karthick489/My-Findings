@@ -1,0 +1,41 @@
+#include <stdio.h>
+int main() 
+{
+   int i, space, rows, k = 0;
+   //printf("Enter the number of rows: ");
+   scanf("%d", &rows);
+   int m=2;
+   for (i = 1; i < 2*rows; ++i, k = 0) 
+   {
+       int a=i;
+       if(i>rows)
+       {
+           a=i-m;
+          // k=k-m+1;
+           m+=2;
+       }
+      for (space = 1; space <= rows - a; ++space) 
+      {
+         printf("  ");
+      }
+      int l=0;
+      while (k != 2 * a - 1) 
+      {
+          int n=pow(2,l);
+          n=pow(a,n);
+          printf("%d ",n);
+          
+          if(k<(2*a-1)/2)
+          {
+              ++l;
+          }
+         else
+         {
+             --l;
+         }
+         ++k;
+      }
+      printf("\n");
+   }
+   return 0;
+}
