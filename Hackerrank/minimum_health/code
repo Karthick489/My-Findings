@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+    int i, j, n, m, rank, temp,health;
+    scanf("%d %d %d", &n, &m, &rank);
+    int a[n], b[m];
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+    for (i = 0; i < n; i++) {
+    for (j = i + 1; j < n; j++) {
+        if (a[j] > a[i]) {
+            temp = a[j];
+            a[j] = a[i];
+            a[i] = temp;
+            }
+        }
+    }
+    for (i = 0; i < m; i++) {
+        scanf("%d", &b[i]);
+    }
+    health=a[rank-1];
+    for(i=0;i<m;i++)
+    {
+        if(b[i]>=a[rank-1])
+        {
+            a[rank-1]=b[i];
+            if(rank>1)
+            {
+                for(j=rank-2;j>=0;j--)
+                {
+                    if(a[j]>b[i])
+                    {
+                        break;
+                    }
+                    a[j+1]=a[j];
+                    a[j]=b[i];
+                }
+            }
+        }
+        health=health+a[rank-1];
+    }
+  printf("%d",health);
+      return 0;
+}
