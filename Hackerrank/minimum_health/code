@@ -1,13 +1,18 @@
-#include <stdio.h>
+/*The minimum health required  for a player to start the game to survive the levels of the game in which the player
+should compete with rank th in the array a which consists of initial set of players and the new player of m is given 
+in the array b and no.of levels is the no.new players+1 and the code returns the the health of player at each level 
+will be decreased by the defeated opponents (rank th player's )player's health and the player should survive all the
+level and my code will give you the minimum health required for the player to survive all the levels*/
 
+#include <stdio.h>
 int main() {
     int i, j, n, m, rank, temp,health;
-    scanf("%d %d %d", &n, &m, &rank);
+    scanf("%d %d %d", &n, &m, &rank); //getting intial and new player count along with rank 
     int a[n], b[m];
     for (i = 0; i < n; i++) {
-        scanf("%d", &a[i]);
+        scanf("%d", &a[i]); //getting the health of the inital players 
     }
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < n; i++) {  //ranking health of the initial player(sort descend). 
     for (j = i + 1; j < n; j++) {
         if (a[j] > a[i]) {
             temp = a[j];
@@ -17,17 +22,17 @@ int main() {
         }
     }
     for (i = 0; i < m; i++) {
-        scanf("%d", &b[i]);
+        scanf("%d", &b[i]); //getting the new_players health.
     }
-    health=a[rank-1];
-    for(i=0;i<m;i++)
+    health=a[rank-1];  //health required to survive 1st level
+    for(i=0;i<m;i++)   //ranking the new players health
     {
         if(b[i]>=a[rank-1])
         {
             a[rank-1]=b[i];
             if(rank>1)
             {
-                for(j=rank-2;j>=0;j--)
+                for(j=rank-2;j>=0;j--)   
                 {
                     if(a[j]>b[i])
                     {
@@ -38,7 +43,7 @@ int main() {
                 }
             }
         }
-        health=health+a[rank-1];
+        health=health+a[rank-1];    //health required to survive i_th level.
     }
   printf("%d",health);
       return 0;
