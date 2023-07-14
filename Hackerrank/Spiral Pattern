@@ -1,0 +1,43 @@
+//Spiral Pattern Printing.
+
+#include <stdio.h>
+
+int main() { 
+ int i,j,m,n,h1,h2,low;
+ scanf("%d %d",&m,&n);
+ int a[m][n];
+ for(i=0;i<m;i++)
+ {
+     for(j=0;j<n;j++)
+     {
+         scanf("%d",&a[i][j]);
+     }
+ }
+ int c=0;
+ h2=n,h1=m,low=0;
+ i=0,j=0;
+while(c<=m*n){
+    while(j<h2){
+        printf("--%d\n",a[i][j]);
+        j++;
+        c++;
+    }h2--,j--,i++;
+    while(i<h1){
+        printf("++%d\n",a[i][j]);
+        i++;
+        c++;
+    }h1--,i--,j--;
+    while(j>=low){
+        printf("**%d\n",a[i][j]);
+        j--;
+        c++;
+    }low++,j++,i--;
+    while(i>=low){
+        printf("$$%d\n",a[i][j]);
+        i--;
+        c++;
+    }i++,j++;
+    }
+
+    return 0;
+}
